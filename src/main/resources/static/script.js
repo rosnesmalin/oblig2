@@ -24,7 +24,7 @@ function hentRegister() {
 
 function formaterData(Billett) { //denne funker ikke
     ut =
-        "<table>"
+        "<table class='table table-striped table-bordered'>"
         + "<tr>"
         + "<th>Film</th>"
         + "<th>Antall billetter</th>"

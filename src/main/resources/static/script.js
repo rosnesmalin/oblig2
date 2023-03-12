@@ -4,7 +4,57 @@ let ut = '';
 
 
 function kjøp() {
-    const Billett = {
+
+    //sjekker om alle input-feltene er fyllt ut
+    let error = false
+
+    if (Billett.film == "") {
+        document.getElementById('fil').innerHTML='Du må velge film';
+    } else {
+        document.getElementById('fil').innerHTML="";
+    }
+    if (Billett.antall == "" ) {
+        document.getElementById('ant').innerHTML="Du må oppgi antall biletter";
+        error = true
+    } else {
+        document.getElementById('ant').innerHTML="";
+    }
+    if (Billett.fornavn == "") {
+        document.getElementById('for').innerHTML="Du må oppgi navn";
+        error = true
+    } else {
+        document.getElementById('for').innerHTML="";
+    }
+    if (Billett.etternavn == "") {
+        document.getElementById('ette').innerHTML="Du må oppgi etternavn";
+        error = true
+    } else {
+        document.getElementById('ette').innerHTML="";
+    }
+    if (Billett.telefonnr == "") {
+        document.getElementById('tlf').innerHTML="Du må oppgi telefonnr";
+        error = true
+    }else {
+        document.getElementById('tlf').innerHTML="";
+    }
+    if (Billett.epost == "") {
+        document.getElementById('epo').innerHTML="Du må oppgi epost-adresse";
+        error = true
+    }else {
+        document.getElementById('epo').innerHTML="";
+    }
+
+    // sørger for at feil-meldingene går bort dersom feltene fylles ut
+    if(!error){
+        document.getElementById('fil').innerHTML= "";
+        document.getElementById('ant').innerHTML="";
+        document.getElementById('for').innerHTML="";
+        document.getElementById('ette').innerHTML="";
+        document.getElementById('tlf').innerHTML="";
+        document.getElementById('epo').innerHTML="";
+
+    //dersom alt er fyllt inn kan objektet opprettes
+        const Billett = {
         film: document.getElementById('film').value,
         antall: document.getElementById('antall').value,
         fornavn: document.getElementById('fornavn').value,
@@ -12,17 +62,20 @@ function kjøp() {
         telefonnr: document.getElementById('telefonnr').value,
         epost: document.getElementById('epost').value
     }
+
+    //kaller på metoden på serveren som legger objektet inn i et array
     $.post("/kjop", Billett, function() {
         hentRegister();
     })
-}
+}}
+    //kaller på metoden på serveren som henter arrayet
 function hentRegister() {
     $.post("/hentRegister", function (data) {
         formaterData(data);
     })
 }
-
-function formaterData(Billett) { //denne funker ikke
+    //legger arrayet som er hentet ut inn i en tabell. Kobler sammen arrayet og tabellen.
+function formaterData(Billett) {
     ut =
         "<table class='table table-striped table-bordered'>"
         + "<tr>"

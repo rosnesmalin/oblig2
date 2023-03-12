@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kino</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body>
+
+
+<h1> Bestilling av kinobiletter </h1>
+
+<label> Velg film:</label>
+<select id="film">
+    <option> Avatar </option>
+    <option> Kampen om Narvik </option>
+    <option> Babylon </option>
+</select>
+<span id="fil" style="color: red"></span>
+
+
+<br>
+<label>Antall:</label>
+<input type="text" id="antall">
+<span id="ant" style="color: red"> </span>
+<br>
+
+<label>Fornavn:</label>
+<input type="text" id="fornavn">
+<span id="for" style="color: red"> </span>
+<br>
+
+<label>Etternavn:</label>
+<input type="text" id="etternavn">
+<span id="ette" style="color: red"> </span>
+<br>
+
+<label>Telefonnr:</label>
+<input type="text" id="telefonnr">
+<span id="tlf" style="color: red"> </span>
+<br>
+
+<label>Epost:</label>
+<input type="text" id="epost">
+<span id="epo" style="color: red"> </span>
+<br>
+
+<button id="kjøp" onclick="kjøp()"> Kjøp billett </button>
+
+
+
+<h2> Alle billetter </h2>
+<div id="registerListet"></div>
+<br>
+<button id="slett" onclick="slett()"> Slett alle billettene </button>
+
+
+</body>
+</html>

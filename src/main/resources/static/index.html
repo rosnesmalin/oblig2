@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kino</title>
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -11,63 +12,65 @@
 <h1> Bestilling av kinobiletter </h1>
 
 
-<div class="container">
-    <form>
-        <div class="form-group col-md-2">
-            <label for="film"> Velg film</label>
-            <select id="film" class="form-control">
-                <option> Avatar </option>
-                <option> Kampen om Narvik </option>
-                <option> Babylon </option>
-            </select>
-            <span id="fil" style="color: red"></span>
-        </div>
+<div class="row">
+    <div class="container col-md-6 col-xs-12">
+        <form>
+            <div class="form-group">
+                <label for="film"> Velg film</label>
+                <select id="film" class="form-control">
+                    <option> Avatar </option>
+                    <option> Kampen om Narvik </option>
+                    <option> Babylon </option>
+                </select>
+                <span id="fil" style="color: red"></span>
+            </div>
 
-        <div class="form-group col-md-5">
-            <label for="antall">Antall</label>
-            <input type="text" id="antall" class="form-control">
-            <span id="ant" style="color: red"> </span>
-        </div>
+            <div class="form-group">
+                <label for="antall">Antall</label>
+                <input type="text" id="antall" class="form-control">
+                <span id="ant" style="color: red"> </span>
+            </div>
 
-        <div class="form-group col-md-5">
-            <label for="fornavn">Fornavn</label>
-            <input type="text" id="fornavn" class="form-control">
-            <span id="for" style="color: red"> </span>
-        </div>
+            <div class="form-group">
+                <label for="fornavn">Fornavn</label>
+                <input type="text" id="fornavn" class="form-control">
+                <span id="for" style="color: red"> </span>
+            </div>
 
-        <div class="form-group col-md-5">
-            <label for="etternavn">Etternavn</label>
-            <input type="text" id="etternavn" class="form-control">
-            <span id="ette" style="color: red"> </span>
-        </div>
+            <div class="form-group ">
+                <label for="etternavn">Etternavn</label>
+                <input type="text" id="etternavn" class="form-control">
+                <span id="ette" style="color: red"> </span>
+            </div>
 
-        <div class="form-group col-md-5">
-            <label for="telefonnr">Telefonnr</label>
-            <input type="text" id="telefonnr" class="form-control">
-            <span id="tlf" style="color: red"> </span>
-        </div>
+            <div class="form-group">
+                <label for="telefonnr">Telefonnr</label>
+                <input type="text" id="telefonnr" class="form-control">
+                <span id="tlf" style="color: red"> </span>
+            </div>
 
-        <div class="form-group col-md-5">
-            <label for="epost">Epost</label>
-            <input type="text" id="epost" class="form-control">
-            <span id="epo" style="color: red"> </span>
-        </div>
-        <div class="form-group col-md-2">
-        <button id="kjøp" onclick="kjøp()" class="btn btn-success form-control"> Kjøp billett </button>
-        </div>
-    </form>
+            <div class="form-group">
+                <label for="epost">Epost</label>
+                <input type="text" id="epost" class="form-control">
+                <span id="epo" style="color: red"> </span>
+            </div>
+            <div class="form-group">
+            <button onclick="kjop()" class="btn btn-success"> Kjøp billett </button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="container col-md-6 col-xs-12">
+        <form>
+            <h2> Alle billetter </h2>
+            <div class="form-group">
+                <div id="registerListet" class="form-control"></div>
+            </div>
+            <button id="slett" onclick="slett()" class="btn btn-danger "> Slett alle billettene </button>
+        </form>
+    </div>
 </div>
 
-
-
-
-<form class="col-md-10">
-    <h2> Alle billetter </h2>
-    <div class="form-group">
-        <div id="registerListet" class="form-control"></div>
-    </div>
-<button id="slett" onclick="slett()" class="btn btn-danger"> Slett alle billettene </button>
-
-</form>
 </body>
 </html>

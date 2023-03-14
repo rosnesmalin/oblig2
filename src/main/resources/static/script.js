@@ -1,18 +1,18 @@
 src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js";
 
-let ut = '';
 
-
-function kjøp() {
-
+function kjop() {
+//objektet opprettes
+    const Billett = {
+        film: document.getElementById('film').value,
+        antall: document.getElementById('antall').value,
+        fornavn: document.getElementById('fornavn').value,
+        etternavn: document.getElementById('etternavn').value,
+        telefonnr: document.getElementById('telefonnr').value,
+        epost: document.getElementById('epost').value
+    }
     //sjekker om alle input-feltene er fyllt ut
     let error = false
-
-    if (Billett.film == "") {
-        document.getElementById('fil').innerHTML='Du må velge film';
-    } else {
-        document.getElementById('fil').innerHTML="";
-    }
     if (Billett.antall == "" ) {
         document.getElementById('ant').innerHTML="Du må oppgi antall biletter";
         error = true
@@ -44,39 +44,35 @@ function kjøp() {
         document.getElementById('epo').innerHTML="";
     }
 
-    // sørger for at feil-meldingene går bort dersom feltene fylles ut
-    if(!error){
-        document.getElementById('fil').innerHTML= "";
-        document.getElementById('ant').innerHTML="";
-        document.getElementById('for').innerHTML="";
-        document.getElementById('ette').innerHTML="";
-        document.getElementById('tlf').innerHTML="";
-        document.getElementById('epo').innerHTML="";
-
-    //dersom alt er fyllt inn kan objektet opprettes
-        const Billett = {
-        film: document.getElementById('film').value,
-        antall: document.getElementById('antall').value,
-        fornavn: document.getElementById('fornavn').value,
-        etternavn: document.getElementById('etternavn').value,
-        telefonnr: document.getElementById('telefonnr').value,
-        epost: document.getElementById('epost').value
-    }
-
+    if(!error) {
     //kaller på metoden på serveren som legger objektet inn i et array
     $.post("/kjop", Billett, function() {
         hentRegister();
-    })
+    });
+        // sørger for at feil-meldingene går bort dersom feltene fylles ut
+        document.getElementById('fil').innerHTML = "";
+        document.getElementById('ant').innerHTML = "";
+        document.getElementById('for').innerHTML = "";
+        document.getElementById('ette').innerHTML = "";
+        document.getElementById('tlf').innerHTML = "";
+        document.getElementById('epo').innerHTML = "";
 }}
     //kaller på metoden på serveren som henter arrayet
 function hentRegister() {
     $.post("/hentRegister", function (data) {
         formaterData(data);
-    })
+    });
 }
     //legger arrayet som er hentet ut inn i en tabell. Kobler sammen arrayet og tabellen.
 function formaterData(Billett) {
-    ut =
+    // tømmer input-feltene
+    document.getElementById('antall').value = null;
+    document.getElementById('fornavn').value = null;
+    document.getElementById('etternavn').value = null;
+    document.getElementById('telefonnr').value = null;
+    document.getElementById('epost').value = null;
+
+    let ut =
         "<table class='table table-striped table-bordered'>"
         + "<tr>"
         + "<th>Film</th>"
@@ -85,7 +81,6 @@ function formaterData(Billett) {
         + "<th>Telefonnr</th>"
         + "<th>Epost</th>"
         + "</tr>"
-
 
     for (let p of Billett) {
         ut += "<tr>"
@@ -96,19 +91,11 @@ function formaterData(Billett) {
     }
     ut += "</table>";
     document.getElementById('registerListet').innerHTML = ut;
-
-    // tømmer input-feltene
-    document.getElementById('fil').value = null;
-    document.getElementById('antall').value = null;
-    document.getElementById('fornavn').value = null;
-    document.getElementById('etternavn').value = null;
-    document.getElementById('telefonnr').value = null;
-    document.getElementById('epost').value = null;
 }
 
 // nullstiller arrayet
 function slett() {
     $.post("/slett", function (data){
-        $("#registerListet").html(data);
+        formaterData(data);
     })
 }

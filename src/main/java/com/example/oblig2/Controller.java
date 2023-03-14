@@ -9,21 +9,21 @@ import java.util.List;
 @RestController
 public class Controller {
 
-    private final List<Billett> filmregister = new ArrayList<>();
+    public final List<Billett> billettregister = new ArrayList<>();
 
     @PostMapping("/kjop")
     public void kjøp(Billett billett) {
-        filmregister.add(billett);
+        billettregister.add(billett);
     }
 
     @PostMapping ("/hentRegister")
     public List<Billett> hentRegister(){
-        return filmregister;
+        return billettregister;
     }
 
     @PostMapping("/slett")
     public List<Billett> slettRegister(){
-        filmregister.clear();
-        return filmregister;
+        billettregister.clear();
+        return billettregister;
     }
 }

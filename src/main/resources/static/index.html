@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Kino</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
@@ -54,21 +55,15 @@
                 <input type="text" id="epost" class="form-control">
                 <span id="epo" style="color: red"> </span>
             </div>
-            <div class="form-group">
-            <button onclick="kjop()" class="btn btn-success"> Kjøp billett </button>
-            </div>
         </form>
+            <button onclick="kjop()" class="btn btn-success"> Kjøp billett </button>
     </div>
 
 
     <div class="container col-md-6 col-xs-12">
-        <form>
             <h2> Alle billetter </h2>
-            <div class="form-group">
-                <div id="registerListet" class="form-control"></div>
-            </div>
-            <button id="slett" onclick="slett()" class="btn btn-danger "> Slett alle billettene </button>
-        </form>
+                <div id="registerListet"></div>
+        <button id="slett" onclick="slett()" class="btn btn-danger "> Slett alle billettene </button>
     </div>
 </div>
 
